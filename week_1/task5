@@ -1,0 +1,24 @@
+weather_dict = {input():1}
+p = float(input())
+q = float(input())
+forecast_in = int(input())
+
+results_dict = {"ясно":0, "пасмурно":0}
+for i in range(forecast_in):
+    new_weather_dict = {}
+    for key, value in weather_dict.items():
+        new_key = key.split(" ")[-1]
+        if new_key == "ясно":
+            new_weather_dict.update({key+" ясно": value*p})
+            new_weather_dict.update({key+" пасмурно": value*(1-p)})
+        if new_key == "пасмурно":
+            new_weather_dict.update({key+" пасмурно": value*q})
+            new_weather_dict.update({key+" ясно": value*(1-q)})
+    weather_dict = new_weather_dict
+for key, value in weather_dict.items():
+    if key.split(" ")[-1] == "ясно":
+        results_dict.update({"ясно": results_dict.get("ясно")+value})
+    if key.split(" ")[-1] == "пасмурно":
+        results_dict.update({"пасмурно": results_dict.get("пасмурно")+value})
+print(max(results_dict, key=results_dict.get))
+print(max(results_dict.values()))

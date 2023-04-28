@@ -1,0 +1,17 @@
+available_num = int(input())
+available_set = set()
+output_list = []
+for i in range(available_num):
+    elem = input()
+    available_set.add(elem)
+recipe_num = int(input())
+for i in range(recipe_num):
+    recipe_name = input()
+    recipe_ingredient_nums = int(input())
+    recipe_ingredients_set = set()
+    for i in range(recipe_ingredient_nums):
+        elem = input()
+        recipe_ingredients_set.add(elem)
+    if recipe_ingredients_set.issubset(available_set):
+        output_list.append(recipe_name)
+for elem in output_list: print elem

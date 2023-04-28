@@ -1,0 +1,22 @@
+nums = input()
+nums_list = nums.split(" ")
+nums_list = [int(x) for x in nums_list]
+max_num = max(nums_list)
+width = len(nums_list)+2
+for num in range(max_num+2):
+    line = ""
+    if num == 0:
+        for i in range(width): 
+            line += "*"
+    elif num == 1:
+        line +="*"
+        for i in range(width-2): line += " " 
+        line +="*"
+    else:
+        line +="*"
+        new_list = [x - max_num+num-1 for x in nums_list]
+        for i in new_list:
+            if i > 0: line+="*"
+            else: line+=" "
+        line +="*"
+    print(line)

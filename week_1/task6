@@ -1,0 +1,24 @@
+import random
+list_of_words = ["meow", "tired", "society", "joker", "phone", "photographer", "shirt", "paper", "flower", "clock"]
+goal_word = random.choice(list_of_words)
+goal_word_list = list(goal_word)
+viewed_word = '_'*len(goal_word)
+guesses = 7
+while viewed_word!=goal_word and guesses >0:
+    print(viewed_word)
+    guess_letter = input("Input a letter: ")
+    if guess_letter not in goal_word_list:
+        guesses -= 1
+        print("Wrong. You have " + str(guesses) + " guesses left")
+    else:
+        output = ""
+        for index, letter in enumerate(viewed_word):
+            if goal_word_list[index] == guess_letter:
+                output += str(guess_letter)
+            else:
+                output += letter
+        viewed_word = output
+if guesses >0:
+    print("You won! Congrats :3")
+else:
+    print("You lost :(")

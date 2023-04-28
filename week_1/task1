@@ -1,0 +1,15 @@
+jar = set()
+no_repeats_list = []
+while True:
+    elem = input()
+    if elem == "":
+        break
+    inted_elem = int(elem)
+    if inted_elem != -1:
+        jar.add(inted_elem)
+    else:
+        for inted_elem in jar:
+            no_repeats_list.append(inted_elem)
+            jar = set()
+result = [i for i in no_repeats_list if no_repeats_list.count(i) == 1]
+print(*result)
